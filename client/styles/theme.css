@@ -26,3 +26,19 @@ button {
   background: #eee;
   padding: 10px 20px;
 }
+.home h1 {
+    text-align:center;
+    font-size:36px;
+    border-bottom:1px solid #555;
+    padding-bottom:15px;
+}
+.home h2 {
+    text-align:center;
+}
+.home #button-strip {
+    margin: 35px auto;
+    text-align:center;
+}
+.home .btn {
+    display: inline-block;
+}

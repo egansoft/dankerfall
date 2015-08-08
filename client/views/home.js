@@ -1,11 +1,29 @@
 Template.home.helpers({
-  myAppVariable: function() {
-    return Session.get('myAppVariable');
-  }
+    homepage: function(param) {
+        return param.hash.page == Session.get('homepage')
+    }
 });
 
 Template.home.events({
-  'click button': function(event, template) {
-    Session.set('myAppVariable', Math.floor(Math.random() * 11));
-  }
+    'click #newButton': function() {
+        Session.set('homepage', 'new')
+    },
+
+    'click #joinButton': function() {
+        Session.set('homepage', 'join')
+    },
+
+    'click #createButton': function() {
+
+    },
+
+    'click #enterButton': function() {
+
+    },
+
+    'click .back': function() {
+        Session.set('homepage', 'home')
+    }
 });
+
+Session.set('homepage', 'home')
