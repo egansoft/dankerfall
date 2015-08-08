@@ -10,6 +10,7 @@
         {{/if}}
         {{#if homepage page="new"}}
             <h2>New Game</h2>
+            <input type="text" class="form-control hometext" placeholder="Enter your name" id="newName" />
             <div id="button-strip">
                 <button id="createButton" class="btn btn-default">Create</button>
                 <button class="btn btn-default back">Back</button>
@@ -17,11 +18,14 @@
         {{/if}}
         {{#if homepage page="join"}}
             <h2>Join Game</h2>
+            <input type="text" class="form-control hometext" placeholder="Enter an access code" id="joinCode" />
+            <input type="text" class="form-control hometext" placeholder="Enter your name" id="joinName" />
             <div id="button-strip">
                 <button id="enterButton" class="btn btn-default">Join</button>
                 <button class="btn btn-default back">Back</button>
             </div>
         {{/if}}
+        
     </div>
   </div>
 </template>
