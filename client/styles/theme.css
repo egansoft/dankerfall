@@ -3,7 +3,6 @@ body {
   background: #242424;
 }
 .container {
-  width: 960px;
   margin: 0 auto;
 }
 .jumbotron {
@@ -52,7 +51,7 @@ li {
     display: inline-block;
 }
 .home .hometext {
-    width:300px;
+    min-width:300px;
     margin:0 auto;
     text-align: center;
 }
