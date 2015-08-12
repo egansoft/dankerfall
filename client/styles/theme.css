@@ -32,10 +32,19 @@ button {
     border-bottom:1px solid #555;
     padding-bottom:15px;
 }
-.home h2 {
+.home h2,
+.home h3,
+.home h4,
+.home ul {
     text-align:center;
 }
-.home #button-strip {
+ul {
+    padding:0;
+}
+li {
+    list-style-type:none;
+}
+.home .button-strip {
     margin: 35px auto;
     text-align:center;
 }
@@ -46,4 +55,8 @@ button {
     width:300px;
     margin:0 auto;
     text-align: center;
+}
+.dank {
+    position:relative;
+    text-align:initial;
 }

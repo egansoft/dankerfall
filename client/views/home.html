@@ -3,7 +3,7 @@
     <div class="jumbotron">
         <h1>Welcome to Dankerfall</h1>
         {{#if homepage page="home"}}
-            <div id="button-strip">
+            <div class="button-strip">
                 <button id="newButton" class="btn btn-default">New Game</button>
                 <button id="joinButton" class="btn btn-default">Join Game</button>
             </div>
@@ -11,7 +11,7 @@
         {{#if homepage page="new"}}
             <h2>New Game</h2>
             <input type="text" class="form-control hometext" placeholder="Enter your name" id="newName" />
-            <div id="button-strip">
+            <div class="button-strip">
                 <button id="createButton" class="btn btn-default">Create</button>
                 <button class="btn btn-default back">Back</button>
             </div>
@@ -20,12 +20,41 @@
             <h2>Join Game</h2>
             <input type="text" class="form-control hometext" placeholder="Enter an access code" id="joinCode" />
             <input type="text" class="form-control hometext" placeholder="Enter your name" id="joinName" />
-            <div id="button-strip">
+            <div class="button-strip">
                 <button id="enterButton" class="btn btn-default">Join</button>
                 <button class="btn btn-default back">Back</button>
             </div>
         {{/if}}
-        
+        {{#if homepage page="wait"}}
+            {{#if started}}
+                <h2>You are the SPY!!!! SHHHHHH!!!!</h2>
+                <div class="button-strip">
+                    <button id="endButton" class="btn btn-default">End Game</button>
+                </div>
+                <ul>
+                    {{#each locations}}
+                        <li class="dank" style="left:{{randLeft}};top:{{randTop}};color:{{randColor}}">{{this}}</li>
+                    {{/each}}
+                </ul>
+            {{else}}
+                <h2>Waiting to start</h2>
+                <div class="button-strip">
+                    <button id="startButton" class="btn btn-default">Start</button>
+                    <div class="checkbox">
+                        <label>
+                        <input type="checkbox" /> Enable dank mode
+                        </label>
+                    </div>
+                </div>
+                <h3>Join code: <strong>{{code}}</strong></h3>
+                <h4>Members:</h4>
+                <ul>
+                    {{#each members}}
+                        <li>{{name}}</li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        {{/if}}
     </div>
   </div>
 </template>
