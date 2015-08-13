@@ -88,7 +88,7 @@ Template.home.events({
 
     'click #startButton': function() {
         up('thisGame', 'started', true)
-        var thisGame = Session.get('thisGame')
+		var thisGame = Games.findOne({_id:Session.get('thisGame')._id})
 		console.log(thisGame)
 		var spyIndex = Math.floor(Math.random()*thisGame.members.length)
 		for(var i=0;i<thisGame.members.length;i++) {
@@ -101,6 +101,7 @@ Template.home.events({
         Games.update({"_id" : thisGame._id}, {$set : {"started" :true}});
         Games.update({"_id" : thisGame._id}, {$set : {location: thisGame.location}});
         Games.update({"_id" : thisGame._id}, {$set : {members: thisGame.members}});
+		Session.set('thisGame', thisGame)
     },
 
     'click #endButton': function() {
