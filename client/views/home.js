@@ -1,3 +1,19 @@
+var locations = [
+	"Dankin Donuts", "Dank of America", "Meth Refinery", "Math Refinery", "The center of a Jihad",
+	"Chuckee Cheese", "North Korea", "Dead", "Guantanamo Bay", "Berlin Wall in 1960s", "Forever 21",
+	"BOFA", "ICDC", "Nick\'s House", "Paris Bagguette", "Stanford", "The Louvre",
+	"Swimming Pool", "Hot Tub", "Dumpster", "Dream", "Strip Club", "Spy Training Facility",
+	"Playground", "Sewers", "JChill HQ", "Hot Tub Factory", "Dank Farm"
+]
+
+var roles = [
+	"Villager", "Not Spy", "Very Much Not Spy", "Goat", "Boss", "Tourist", "Dank Dealer", "Dank Addict", "Visitor",
+	"Local", "Hitler", "Chairman Mao", "Kim Jong Un", "Fidel Castro", "Obama", "Stalin", "Loser", "Fuckup", "Prisoner",
+	"Shirtless Guy", "Shithead", "Fucker"
+]
+
+var myRole
+
 Template.home.helpers({
     homepage: function(param) {
         return param.hash.page == Session.get('homepage')
@@ -16,15 +32,10 @@ Template.home.helpers({
         return Games.findOne({_id:Session.get('thisGame')._id}).started
     },
     locations: function() {
-        return [
-          "Dankin Donuts", "Dank of America", "Meth Refinery", "Math Refinery", "LOL Worlds 2015", "The center of a Jihad",
-          "Chuckee Cheese", "North Korea", "Dead", "Guantanamo Bay", "Berlin Wall in 1960s", "Forever 21",
-          "BOFA", "ICDC", "Nick\'s House", "Paris Bagguette", "Bikini Bottom", "Stanford", "The Louvre",
-          "Swimming Pool", "Hot Tub", "Dumpster", "Dream", "Strip Club", "Spy Training Facility",
-          "Playground", "Sewers"
-        ];
-    },
+        return locations
+	},
     randLeft: function() {
+		return (Math.random()*100) + "%";
         return (Math.random()*810-100)+"px"
     },
     randTop: function() {
@@ -32,7 +43,26 @@ Template.home.helpers({
     },
     randColor: function() {
         return '#'+Math.floor(Math.random()*16777215).toString(16)
-    }
+    },
+	randSize: function() {
+		return (Math.random()*16 + 8) + "pt"
+	},
+	locationRole: function() {
+        var loc = Games.findOne({_id:Session.get('thisGame')._id}).location
+		var members = Games.findOne({_id:Session.get('thisGame')._id}).members
+		for(var i=0;i<members.length;i++) {
+			if(members[i].id == Session.get('me').id) {
+				var role = members[i].role
+				break
+			}
+		}
+		if(role == 'spy')
+			return "YOU'RE THE SPY!!!!! SHHHHHHH!!!!!"
+		if(!role) // uhhhh wtf
+			role = roles[Math.floor(Math.random()*roles.length)]
+		return "YOUR ROLE IS " + role + " AND YOUR LOCATION IS " + loc + "!!!!!!!"
+	}
+
 });
 
 Template.home.events({
@@ -61,7 +91,18 @@ Template.home.events({
     'click #startButton': function() {
         up('thisGame', 'started', true)
         var thisGame = Session.get('thisGame')
+		console.log(thisGame)
+		var spyIndex = Math.floor(Math.random()*thisGame.members.length)
+		for(var i=0;i<thisGame.members.length;i++) {
+			if(i==spyIndex)
+				thisGame.members[spyIndex].role = "spy"
+			else 
+				thisGame.members[i].role = roles[Math.floor(Math.random()*roles.length)]
+		}
+		thisGame.location = locations[Math.floor(Math.random()*locations.length)]
         Games.update({"_id" : thisGame._id}, {$set : {"started" :true}});
+        Games.update({"_id" : thisGame._id}, {$set : {location: thisGame.location}});
+        Games.update({"_id" : thisGame._id}, {$set : {members: thisGame.members}});
     },
 
     'click #endButton': function() {
@@ -78,7 +119,8 @@ var setupGame = function() {
     var hash = Math.random().toString(36).substring(5,10);
     me = {
         name: name,
-        role: 'spy'
+        role: 'spy',
+		id: Math.random().toString(36).substring(5,10)
     }
     var id = Games.insert({
         code: hash,
@@ -99,7 +141,8 @@ var joinGame = function(code, name) {
     var thisGame = Session.get('thisGame')
     Session.set('me', {
         name: name,
-        role: 'spy'
+        role: 'spy',
+		id: Math.random().toString(36).substring(5,10)
     })
     if(thisGame) {
         var members = thisGame.members
@@ -119,3 +162,4 @@ var up = function(sesh, prop, val) {
     Session.set(sesh, thing)
 
 }
+

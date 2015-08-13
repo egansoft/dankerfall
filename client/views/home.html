@@ -27,24 +27,24 @@
         {{/if}}
         {{#if homepage page="wait"}}
             {{#if started}}
-                <h2>You are the SPY!!!! SHHHHHH!!!!</h2>
+				<h2 class="reveal showFront">{{locationRole}}</h2>
                 <div class="button-strip">
-                    <button id="endButton" class="btn btn-default">End Game</button>
+                    <button id="endButton" class="btn btn-default showFront">End Game</button>
                 </div>
                 <ul>
                     {{#each locations}}
-                        <li class="dank" style="left:{{randLeft}};top:{{randTop}};color:{{randColor}}">{{this}}</li>
+					<li class="dank" style="left:{{randLeft}};top:{{randTop}};color:{{randColor}};font-size:{{randSize}}">{{this}}</li>
                     {{/each}}
                 </ul>
             {{else}}
                 <h2>Waiting to start</h2>
                 <div class="button-strip">
                     <button id="startButton" class="btn btn-default">Start</button>
-                    <div class="checkbox">
+                    <!--<div class="checkbox">
                         <label>
                         <input type="checkbox" /> Enable danker mode
                         </label>
-                    </div>
+					</div>-->
                 </div>
                 <h3>Join code: <strong>{{code}}</strong></h3>
                 <h4>Members:</h4>

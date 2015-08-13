@@ -58,4 +58,11 @@ li {
 .dank {
     position:relative;
     text-align:initial;
+	pointer-events:none;
+}
+.reveal {
+	text-transform:uppercase;
+}
+.showFront {
+	z-index:4206969;
 }
