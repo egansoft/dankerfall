@@ -35,8 +35,7 @@ Template.home.helpers({
         return locations
 	},
     randLeft: function() {
-		return (Math.random()*100) + "%";
-        return (Math.random()*810-100)+"px"
+		return (Math.random()*80) + "%";
     },
     randTop: function() {
         return (Math.random()*300 - 500)+"px"
