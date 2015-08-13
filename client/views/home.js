@@ -19,7 +19,6 @@ Template.home.helpers({
         return param.hash.page == Session.get('homepage')
     },
     members: function() {
-        console.log('memebrs')
         return Games.findOne({_id:Session.get('thisGame')._id}).members
     },
     code: function() {
@@ -150,7 +149,8 @@ var joinGame = function(code, name) {
     }
     Games.update({"_id" : thisGame._id}, {$push : {"members" : {
         "name" : name,
-        "role" : "spy"
+        "role" : "spy",
+		id: Session.get('me').id
     }}});
     return thisGame
 }
