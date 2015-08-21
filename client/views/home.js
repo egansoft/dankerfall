@@ -94,7 +94,7 @@ var setupGame = function() {
 
 var joinGame = function(code, name) {
     var name = $('#joinName').val()
-    var code = $('#joinCode').val()
+    var code = $('#joinCode').val().toLowerCase()
     Session.set('thisGame', Games.findOne({code: code}))
     var thisGame = Session.get('thisGame')
     Session.set('me', {
