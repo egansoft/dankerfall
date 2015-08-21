@@ -7,9 +7,9 @@ var locations = [
 ]
 
 var roles = [
-	"Villager", "Not Spy", "Very Much Not Spy", "Goat", "Boss", "Tourist", "Dank Dealer", "Dank Addict", "Visitor",
-	"Local", "Hitler", "Chairman Mao", "Kim Jong Un", "Fidel Castro", "Obama", "Stalin", "Loser", "Fuckup", "Prisoner",
-	"Shirtless Guy", "Shithead", "Fucker"
+	"Villager", "Not Spy", "Very Much Not Spy", "Goat", "Boss", "Tourist", "Dank Dealer", "Dank Addict",
+	"Hitler", "Chairman Mao", "Kim Jong Un", "Fidel Castro", "Obama", "Stalin", "Loser", "Fuckup",
+    "Shirtless Guy", "Shithead", "Fucker", "Totally not the fucking spy", "Fucking Shithead"
 ]
 
 var myRole
@@ -94,7 +94,7 @@ Template.home.events({
 		for(var i=0;i<thisGame.members.length;i++) {
 			if(i==spyIndex)
 				thisGame.members[spyIndex].role = "spy"
-			else 
+			else
 				thisGame.members[i].role = roles[Math.floor(Math.random()*roles.length)]
 		}
 		thisGame.location = locations[Math.floor(Math.random()*locations.length)]
@@ -162,4 +162,3 @@ var up = function(sesh, prop, val) {
     Session.set(sesh, thing)
 
 }
-
