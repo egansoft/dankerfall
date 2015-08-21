@@ -6,7 +6,6 @@ body {
   margin: 0 auto;
 }
 .jumbotron {
-  padding: 100px;
   font-size: 16px;
   font-weight: 200;
   line-height: 1.5;
@@ -58,4 +57,11 @@ li {
 .dank {
     position:relative;
     text-align:initial;
+	pointer-events:none;
+}
+.reveal {
+	text-transform:uppercase;
+}
+.showFront {
+	z-index:4206969;
 }
