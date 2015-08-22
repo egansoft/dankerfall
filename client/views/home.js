@@ -1,9 +1,8 @@
 var locations = [
-	"Dankin Donuts", "Dank of America", "Meth Refinery", "Math Refinery", "The center of a Jihad",
-	"Chuckee Cheese", "North Korea", "Dead", "Guantanamo Bay", "Berlin Wall in 1960s", "Forever 21",
-	"BOFA", "ICDC", "Nick\'s House", "Paris Bagguette", "Stanford", "The Louvre",
-	"Swimming Pool", "Hot Tub", "Dumpster", "Dream", "Strip Club", "Spy Training Facility",
-	"Playground", "Sewers", "JChill HQ", "Hot Tub Factory", "Dank Farm"
+	"Dankin Donuts", "Dank of America", "Meth Refinery", "Math Refinery",
+	"Chuckee Cheese", "North Korea", "Dead", "Guantanamo Bay", "Berlin Wall", "Forever 21",
+	"Hot Tub", "Dumpster", "Dream", "Strip Club", "Spy Training Facility",
+	"Playground", "Sewers", "Hot Tub Factory", "Dank Farm"
 ]
 
 var roles = [
